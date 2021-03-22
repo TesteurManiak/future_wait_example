@@ -24,8 +24,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<void> _navigateTo(Future future) => Navigator.push(
-      context, MaterialPageRoute(builder: (_) => ResultPage(future)));
+  Future<void> _navigateTo(Future future, String title) => Navigator.push(
+      context, MaterialPageRoute(builder: (_) => ResultPage(future, title)));
 
   /// Elapsed time should be around 2 seconds.
   Future<void> _futureWait() async {
@@ -58,12 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             ElevatedButton(
-              onPressed: () => _navigateTo(_multiAwait()),
+              onPressed: () => _navigateTo(_multiAwait(), 'Multiple await'),
               child: Text('Multiple await'),
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () => _navigateTo(_futureWait()),
+              onPressed: () => _navigateTo(_futureWait(), 'Future.wait()'),
               child: Text('Future.wait()'),
             ),
           ],
